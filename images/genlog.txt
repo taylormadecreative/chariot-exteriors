@@ -1,0 +1,5 @@
+web-hero.png (16:9 4K) try1 ... OK 9661KB
+crew-install.png (4:3 2K) try1 ... OK 3383KB
+consult-homeowners.png (4:3 2K) try1 ... OK 2969KB
+cta-dusk.png (16:9 4K) try1 ... OK 9676KB
+DONE 4/4

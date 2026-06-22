@@ -1,0 +1,5 @@
+images/src/
+preview/
+*.log
+.DS_Store
+node_modules/
