@@ -111,7 +111,7 @@ img{max-width:100%;display:block;}
   overflow-wrap:anywhere;text-wrap:balance;}
 .hero h1 span{display:block;}
 .hero h1 .hl{color:var(--green-lt);}
-.hero-sub{font-size:var(--lead);color:#e6edff;max-width:34ch;margin-bottom:1.7rem;}
+.hero-sub{font-size:var(--lead);color:#e6edff;max-width:34ch;margin-bottom:1.7rem;text-shadow:0 1px 14px rgba(8,18,46,.45);}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.8rem;}
 .hero-trust{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;}
 .hero-trust li{list-style:none;display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:.96rem;color:#dbe6ff;}
@@ -290,11 +290,24 @@ ul.hero-trust{padding:0;margin:0;}
   .steps{grid-template-columns:1fr;gap:2rem;}
   .steps::before{display:none;}
   .foot-grid{grid-template-columns:1fr;}
-  .hero-actions{flex-direction:column;}
-  .hero-actions .btn{width:100%;}
+  /* mobile hero: let the photo carry it. image > headline > tidy CTA */
+  .hero-bg::after{background:linear-gradient(180deg,
+    rgba(9,20,52,.9) 0%,rgba(9,20,52,.6) 28%,rgba(9,20,52,.26) 52%,rgba(9,20,52,.16) 74%,rgba(9,20,52,.46) 100%);}
+  .hero-grid{min-height:80svh;padding-block:clamp(2rem,6vw,3.5rem);}
+  .hero-copy{max-width:none;}
   h1{font-size:clamp(1.9rem,7.8vw,2.5rem);}
   .hero-copy .kicker{font-size:.72rem;letter-spacing:.1em;}
-  .hero-sub{font-size:1.08rem;}
+  .hero-sub{font-size:1.04rem;max-width:32ch;margin-bottom:1.4rem;}
+  .hero-actions{flex-direction:row;flex-wrap:wrap;gap:.6rem;margin-bottom:0;}
+  .hero-actions .btn{width:auto;}
+  .hero .btn-lg{padding:.82rem 1.4rem;font-size:1rem;}
+  .hero-trust{display:none;}            /* redundant with the ribbon below */
+
+  /* trust ribbon: centered, swipeable single row */
+  .ribbon ul{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:1.6rem;
+    padding-block:.95rem;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;}
+  .ribbon ul::-webkit-scrollbar{display:none;}
+  .ribbon li{flex:none;scroll-snap-align:center;font-size:.94rem;}
 }
 
 /* ---------- mobile menu ---------- */
