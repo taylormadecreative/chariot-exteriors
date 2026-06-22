@@ -178,7 +178,7 @@ ul.hero-trust{padding:0;margin:0;}
 .why-badge .t{font-size:.82rem;font-weight:600;line-height:1.15;}
 
 /* ===================== BEFORE / AFTER ===================== */
-.ba-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(1rem,2vw,1.6rem);align-items:stretch;}
+.ba-wrap{max-width:1000px;margin-inline:auto;}
 .ba-slider{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
   aspect-ratio:16/10;user-select:none;touch-action:pan-y;cursor:ew-resize;background:#0b1430;}
 .ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
