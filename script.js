@@ -90,6 +90,16 @@
     $$('a[href="#quote"]').forEach(a => a.addEventListener('click', e => {
       e.preventDefault(); closeMenu(); openQuote(a.dataset.service);
     }));
+    // keep keyboard focus inside the dialog while it's open
+    panel.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const f = [...panel.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')]
+        .filter(el => !el.disabled && el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 
   /* quote form -> FormSubmit AJAX with inline success */
