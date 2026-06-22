@@ -9,29 +9,45 @@
 
   /* sticky header state */
   const header = $('.site-header');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
-  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  if (header) {
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  }
 
   /* mobile menu */
   const burger = $('#hamburger'), menu = $('#mobileMenu');
-  const closeMenu = () => { burger.setAttribute('aria-expanded', 'false'); menu.classList.remove('open'); document.body.style.overflow = ''; };
-  burger.addEventListener('click', () => {
-    const open = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!open));
-    menu.classList.toggle('open', !open);
-    document.body.style.overflow = !open ? 'hidden' : '';
-  });
-  $$('#mobileMenu a').forEach(a => a.addEventListener('click', closeMenu));
+  const closeMenu = () => {
+    if (!burger || !menu || !menu.classList.contains('open')) return;
+    burger.setAttribute('aria-expanded', 'false'); menu.classList.remove('open'); document.body.style.overflow = '';
+  };
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('open', !open);
+      document.body.style.overflow = !open ? 'hidden' : '';
+      if (!open) { const first = menu.querySelector('a'); if (first) first.focus(); }
+    });
+    $$('#mobileMenu a').forEach(a => a.addEventListener('click', closeMenu));
+    // keep Tab within the open menu
+    menu.addEventListener('keydown', e => {
+      if (e.key !== 'Tab' || !menu.classList.contains('open')) return;
+      const f = [...menu.querySelectorAll('a')];
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
 
   /* before / after slider */
   const slider = $('#baSlider'), range = $('#baRange');
   if (slider && range) {
-    const set = v => slider.style.setProperty('--pos', v + '%');
+    const set = v => { slider.style.setProperty('--pos', v + '%'); range.setAttribute('aria-valuetext', Math.round(v) + '% after image shown'); };
     range.addEventListener('input', e => set(e.target.value));
     // allow click/drag anywhere on the image to move handle
     const moveTo = clientX => {
       const r = slider.getBoundingClientRect();
-      const pct = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
+      const pct = Math.round(Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100)));
       range.value = pct; set(pct);
     };
     let dragging = false;
@@ -40,14 +56,12 @@
     window.addEventListener('pointerup', () => { dragging = false; });
   }
 
-  /* FAQ accordion */
+  /* FAQ accordion — state lives on the button (CSS reacts via :has) */
   $$('.qa button').forEach(btn => {
     btn.addEventListener('click', () => {
-      const qa = btn.parentElement;
-      const open = qa.getAttribute('aria-expanded') === 'true';
-      // close siblings for a clean single-open accordion
-      $$('.qa').forEach(o => { o.setAttribute('aria-expanded', 'false'); o.querySelector('button').setAttribute('aria-expanded', 'false'); });
-      if (!open) { qa.setAttribute('aria-expanded', 'true'); btn.setAttribute('aria-expanded', 'true'); }
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      $$('.qa button').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      if (!open) btn.setAttribute('aria-expanded', 'true');
     });
   });
 
@@ -86,7 +100,15 @@
     fab.addEventListener('click', () => openQuote());
     closeBtn.addEventListener('click', closeQuote);
     backdrop.addEventListener('click', closeQuote);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQuote(); });
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      closeQuote();
+      if (menu && menu.classList.contains('open')) { closeMenu(); if (burger) burger.focus(); }
+    });
+    // re-evaluate scroll-lock if the viewport crosses the mobile/desktop threshold while open
+    window.addEventListener('resize', () => {
+      if (!panel.hidden) document.body.style.overflow = window.innerWidth < 700 ? 'hidden' : '';
+    });
     $$('a[href="#quote"]').forEach(a => a.addEventListener('click', e => {
       e.preventDefault(); closeMenu(); openQuote(a.dataset.service);
     }));
@@ -121,7 +143,7 @@
         if (res.ok) {
           form.querySelectorAll('.field, .fineprint').forEach(el => el.style.display = 'none');
           btn.style.display = 'none';
-          status.innerHTML = '<div style="text-align:center;padding:1rem 0"><div style="width:58px;height:58px;border-radius:50%;background:rgba(62,140,78,.12);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3E8C4E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h2 style="margin:0 0 .3rem">Thanks, we got it!</h2><p style="color:var(--muted);margin:0">Sean will reach out shortly to set up your free in-home estimate.</p></div>';
+          status.innerHTML = '<div style="text-align:center;padding:1rem 0"><div style="width:58px;height:58px;border-radius:50%;background:rgba(62,140,78,.12);display:flex;align-items:center;justify-content:center;margin:0 auto .8rem"><svg aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3E8C4E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><strong style="display:block;font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--navy);margin:0 0 .3rem">Thanks, we got it!</strong><p style="color:var(--muted);margin:0">Sean will reach out shortly to set up your free in-home estimate.</p></div>';
         } else { throw new Error('bad response'); }
       } catch (err) {
         btn.disabled = false; btn.textContent = original;
