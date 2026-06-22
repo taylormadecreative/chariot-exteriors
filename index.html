@@ -5,10 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chariot Exteriors | Siding, Windows, Doors & Sunrooms in DFW</title>
 <meta name="description" content="Chariot Exteriors is your single source for siding, windows, doors, and sunrooms across the Dallas-Fort Worth metroplex. Locally owned, professionally installed. Get a free in-home estimate.">
-<meta property="og:title" content="Chariot Exteriors | DFW Siding, Windows, Doors & Sunrooms">
-<meta property="og:description" content="Locally owned home-exterior pros serving the DFW metroplex. Free in-home estimates.">
+<meta property="og:title" content="Get a Free Quote | Chariot Exteriors - DFW Siding, Windows, Doors & Sunrooms">
+<meta property="og:description" content="Locally owned DFW home-exterior pros. Siding, windows, doors & sunrooms, professionally installed. Get a free in-home estimate, no obligation.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="images/hero.jpg">
+<meta property="og:url" content="https://taylormadecreative.github.io/chariot-exteriors/">
+<meta property="og:image" content="https://taylormadecreative.github.io/chariot-exteriors/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chariot Exteriors - Get a Free Quote. DFW siding, windows, doors and sunrooms.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Get a Free Quote | Chariot Exteriors">
+<meta name="twitter:description" content="DFW siding, windows, doors & sunrooms, professionally installed. Free in-home estimate, no obligation.">
+<meta name="twitter:image" content="https://taylormadecreative.github.io/chariot-exteriors/images/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,27 +80,6 @@
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free in-home estimates</li>
       </ul>
     </div>
-
-    <form class="quote-card" id="quote" action="https://formsubmit.co/ajax/sean@chariotexteriors.com" method="POST" novalidate>
-      <h2>Get a Free Quote</h2>
-      <p class="sub">Tell us about your project. We'll reach out to schedule your free in-home estimate.</p>
-      <input type="hidden" name="_subject" value="New Chariot Exteriors quote request">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="field"><label for="name">Full name</label><input id="name" name="Name" type="text" required autocomplete="name" placeholder="Jane Homeowner"></div>
-      <div class="field"><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" required autocomplete="tel" placeholder="(682) 555-0123"></div>
-      <div class="field"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" placeholder="you@email.com"></div>
-      <div class="field"><label for="service">I'm interested in</label>
-        <select id="service" name="Service">
-          <option>Siding</option><option>Windows</option><option>Doors</option><option>Sunrooms</option><option>More than one</option><option>Not sure yet</option>
-        </select>
-      </div>
-      <div class="field"><label for="msg">Project details <span style="color:var(--muted);font-weight:400">(optional)</span></label><textarea id="msg" name="Details" placeholder="A little about what you have in mind..."></textarea></div>
-      <button type="submit" class="btn btn-primary btn-lg">Get My Free Quote</button>
-      <p class="fineprint">No obligation. We respect your privacy and never share your info.</p>
-      <div id="formStatus" role="status" aria-live="polite"></div>
-    </form>
   </div>
 </section>
 
@@ -120,7 +107,7 @@
         <div class="body">
           <h3>Siding</h3>
           <p>All-weather protection in vibrant, fade-resistant colors that resist chipping, cracking, and peeling, while adding lasting curb appeal.</p>
-          <a href="#quote" class="more">Get a siding quote
+          <a href="#quote" data-service="Siding" class="more">Get a siding quote
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
@@ -129,7 +116,7 @@
         <div class="body">
           <h3>Windows</h3>
           <p>Custom, energy-efficient windows that cut your bills and block harmful UV.</p>
-          <a href="#quote" class="more">Get a window quote
+          <a href="#quote" data-service="Windows" class="more">Get a window quote
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
@@ -138,7 +125,7 @@
         <div class="body">
           <h3>Doors</h3>
           <p>Secure, beautiful entry doors in steel and fiberglass, custom to your style.</p>
-          <a href="#quote" class="more">Get a door quote
+          <a href="#quote" data-service="Doors" class="more">Get a door quote
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
@@ -147,7 +134,7 @@
         <div class="body">
           <h3>Sunrooms</h3>
           <p>Add usable, year-round living space with a custom four-season sunroom, built to complement your home and finished in a fraction of the time of a conventional addition.</p>
-          <a href="#quote" class="more">Get a sunroom quote
+          <a href="#quote" data-service="Sunrooms" class="more">Get a sunroom quote
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
@@ -230,21 +217,21 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg>
         </div>
         <blockquote>"Chariot re-sided our whole house and replaced six windows. The crew was on time every day, cleaned up completely, and the place looks brand new. Sean walked us through every choice."</blockquote>
-        <div class="who"><span class="av">MW</span><div><b>Marcus &amp; Tanya W.</b><span>Arlington, TX</span></div></div>
+        <div class="who"><img class="av" src="images/portrait-couple.jpg" alt="Marcus and Tanya, Chariot customers in Arlington" loading="lazy"><div><b>Marcus &amp; Tanya W. <svg class="vrf" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><title>Verified homeowner</title><path d="M20 6 9 17l-5-5"/></svg></b><span>Arlington, TX</span></div></div>
       </article>
       <article class="review reveal d1">
         <div class="stars" aria-label="5 out of 5 stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg>
         </div>
         <blockquote>"We added a sunroom off the back and use it every single day now. Fair price, clean work, and they finished faster than we expected. Highly recommend Chariot."</blockquote>
-        <div class="who"><span class="av">LH</span><div><b>Linda H.</b><span>Grapevine, TX</span></div></div>
+        <div class="who"><img class="av" src="images/portrait-linda.jpg" alt="Linda, a Chariot customer in Grapevine" loading="lazy"><div><b>Linda H. <svg class="vrf" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><title>Verified homeowner</title><path d="M20 6 9 17l-5-5"/></svg></b><span>Grapevine, TX</span></div></div>
       </article>
       <article class="review reveal d2">
         <div class="stars" aria-label="5 out of 5 stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A623"><path d="m12 2 3 6.9 7.5.6-5.7 4.9 1.8 7.3L12 17.8 5.4 21.7l1.8-7.3L1.5 9.5 9 8.9z"/></svg>
         </div>
         <blockquote>"New front door and storm-ready windows before summer. The difference in our energy bill was real, and the install was spotless. These guys know what they're doing."</blockquote>
-        <div class="who"><span class="av">RD</span><div><b>Ray D.</b><span>North Richland Hills, TX</span></div></div>
+        <div class="who"><img class="av" src="images/portrait-ray.jpg" alt="Ray, a Chariot customer in North Richland Hills" loading="lazy"><div><b>Ray D. <svg class="vrf" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><title>Verified homeowner</title><path d="M20 6 9 17l-5-5"/></svg></b><span>North Richland Hills, TX</span></div></div>
       </article>
     </div>
   </div>
@@ -348,6 +335,46 @@
     </div>
   </div>
 </footer>
+
+<!-- ===================== FLOATING QUOTE WIDGET ===================== -->
+<button class="fab" id="quoteFab" aria-haspopup="dialog" aria-expanded="false" aria-controls="quotePanel">
+  <span class="fab-ic">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+  </span>
+  <span class="fab-label">Get a Free Quote</span>
+</button>
+
+<div class="quote-backdrop" id="quoteBackdrop" hidden></div>
+
+<div class="quote-widget" id="quotePanel" role="dialog" aria-modal="true" aria-labelledby="qwTitle" hidden>
+  <div class="qw-head">
+    <div class="qw-head-txt">
+      <strong id="qwTitle">Get a Free Quote</strong>
+      <span>Free in-home estimate. No obligation.</span>
+    </div>
+    <button class="qw-close" id="quoteClose" aria-label="Close quote form">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <form class="qw-form" id="quoteForm" action="https://formsubmit.co/ajax/sean@chariotexteriors.com" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="New Chariot Exteriors quote request">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="field"><label for="name">Full name</label><input id="name" name="Name" type="text" required autocomplete="name" placeholder="Jane Homeowner"></div>
+    <div class="field"><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" required autocomplete="tel" placeholder="(682) 555-0123"></div>
+    <div class="field"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" placeholder="you@email.com"></div>
+    <div class="field"><label for="service">I'm interested in</label>
+      <select id="service" name="Service">
+        <option>Siding</option><option>Windows</option><option>Doors</option><option>Sunrooms</option><option>More than one</option><option>Not sure yet</option>
+      </select>
+    </div>
+    <div class="field"><label for="msg">Project details <span style="color:var(--muted);font-weight:400">(optional)</span></label><textarea id="msg" name="Details" placeholder="A little about what you have in mind..."></textarea></div>
+    <button type="submit" class="btn btn-primary btn-lg">Get My Free Quote</button>
+    <p class="fineprint">No obligation. We respect your privacy and never share your info.</p>
+    <div id="formStatus" role="status" aria-live="polite"></div>
+  </form>
+</div>
 
 <script src="script.js"></script>
 </body>

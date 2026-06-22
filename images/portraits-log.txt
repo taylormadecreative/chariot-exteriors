@@ -1,0 +1,4 @@
+portrait-couple.png try1 ... OK 3256KB
+portrait-linda.png try1 ... OK 2757KB
+portrait-ray.png try1 ... OK 2972KB
+DONE 3/3

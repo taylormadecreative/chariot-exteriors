@@ -62,8 +62,38 @@
     reveals.forEach(el => el.classList.add('in'));
   }
 
+  /* floating quote widget (chat-style, follows scroll) */
+  const fab = $('#quoteFab'), panel = $('#quotePanel'), backdrop = $('#quoteBackdrop'), closeBtn = $('#quoteClose');
+  let lastFocus = null;
+  function openQuote(service) {
+    if (!panel) return;
+    lastFocus = document.activeElement;
+    panel.hidden = false; backdrop.hidden = false;
+    requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('show'); fab.classList.add('hide'); });
+    fab.setAttribute('aria-expanded', 'true');
+    if (window.innerWidth < 700) document.body.style.overflow = 'hidden';
+    if (service) { const sel = $('#service'); if (sel) sel.value = service; }
+    setTimeout(() => { const f = $('#name'); if (f) f.focus({ preventScroll: true }); }, 340);
+  }
+  function closeQuote() {
+    if (!panel || panel.hidden) return;
+    panel.classList.remove('open'); backdrop.classList.remove('show'); fab.classList.remove('hide');
+    fab.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+    setTimeout(() => { panel.hidden = true; backdrop.hidden = true; }, 340);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  if (fab) {
+    fab.addEventListener('click', () => openQuote());
+    closeBtn.addEventListener('click', closeQuote);
+    backdrop.addEventListener('click', closeQuote);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQuote(); });
+    $$('a[href="#quote"]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault(); closeMenu(); openQuote(a.dataset.service);
+    }));
+  }
+
   /* quote form -> FormSubmit AJAX with inline success */
-  const form = $('#quote'), status = $('#formStatus');
+  const form = $('#quoteForm'), status = $('#formStatus');
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
