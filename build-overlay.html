@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,800;0,900;1,900&family=Oswald:wght@500;600;700&family=Hanken+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--blue:#3F6EF0;--green:#3E8C4E;--green-lt:#5BB06C;--navy:#0E2356;}
+  html,body{width:1280px;height:720px;overflow:hidden;background:transparent;font-family:'Hanken Grotesk',sans-serif;}
+  .frame{position:relative;width:1280px;height:720px;}
+  /* persistent brand mark, top-left */
+  .brandmark{position:absolute;top:46px;left:64px;font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;
+    color:#fff;font-size:40px;letter-spacing:-.01em;line-height:.8;text-shadow:0 2px 14px rgba(8,18,46,.5);}
+  .brandmark .tag{display:block;font-weight:800;font-style:normal;color:var(--green-lt);font-size:13px;letter-spacing:.2em;margin-top:7px;}
+  /* lower-left product label */
+  .label{position:absolute;left:64px;bottom:70px;}
+  .label .bar{width:64px;height:5px;background:var(--green-lt);border-radius:5px;margin-bottom:18px;}
+  .label .name{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:80px;
+    line-height:.9;letter-spacing:.01em;text-shadow:0 3px 22px rgba(8,18,46,.6);}
+  .label .desc{font-family:'Hanken Grotesk',sans-serif;font-weight:600;color:#eaf1ff;font-size:27px;margin-top:14px;
+    letter-spacing:.01em;text-shadow:0 2px 12px rgba(8,18,46,.7);max-width:760px;}
+  /* intro / outro centered */
+  .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+  .center .logo{font-family:'Archivo',sans-serif;font-weight:900;font-style:italic;color:#fff;font-size:118px;line-height:.8;
+    letter-spacing:-.02em;text-shadow:0 4px 30px rgba(8,18,46,.6);}
+  .center .logo .tag{display:block;font-weight:800;font-style:normal;color:var(--green-lt);font-size:27px;letter-spacing:.26em;margin-top:18px;}
+  .center .kicker{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.24em;
+    color:#cfe0ff;font-size:22px;margin-top:30px;}
+  .out .big{font-family:'Archivo',sans-serif;font-weight:900;color:#fff;font-size:92px;line-height:.95;letter-spacing:-.02em;text-shadow:0 4px 26px rgba(8,18,46,.6);}
+  .out .big b{color:var(--green-lt);}
+  .out .row{font-family:'Oswald',sans-serif;font-weight:600;color:#eaf1ff;font-size:30px;letter-spacing:.06em;margin-top:26px;}
+  .out .row .dot{color:var(--green-lt);margin:0 14px;}
+</style></head>
+<body>
+<div class="frame" id="frame"></div>
+<script>
+  const data = {
+    intro:  { type:'intro' },
+    siding: { name:'Siding', desc:'Fade-resistant colors · all-weather · lifetime warranty' },
+    windows:{ name:'Windows', desc:'Elegant black &amp; wood frames · energy efficient' },
+    doors:  { name:'Doors', desc:'Steel &amp; fiberglass · decorative glass · custom built' },
+    sunrooms:{ name:'Sunrooms', desc:'Add bright, livable space · custom designed' },
+    screenrooms:{ name:'Screen Rooms', desc:'Shade &amp; breeze · keeps the bugs out' },
+    outro:  { type:'outro' },
+  };
+  const key = (location.hash||'#intro').slice(1);
+  const d = data[key] || data.intro;
+  const f = document.getElementById('frame');
+  if (d.type === 'intro') {
+    f.innerHTML = '<div class="center"><div class="logo">CHARIOT<span class="tag">SIDING • WINDOWS • DOORS</span></div><div class="kicker">Dallas–Fort Worth Home Exteriors</div></div>';
+  } else if (d.type === 'outro') {
+    f.innerHTML = '<div class="center out"><div class="logo" style="font-size:74px;margin-bottom:26px">CHARIOT<span class="tag" style="font-size:18px">SIDING • WINDOWS • DOORS</span></div><div class="big">Get a <b>Free Quote</b></div><div class="row">chariotexteriors.com<span class="dot">•</span>(682) 688-2233</div></div>';
+  } else {
+    f.innerHTML = '<div class="brandmark">CHARIOT<span class="tag">SIDING • WINDOWS • DOORS</span></div>'
+      + '<div class="label"><div class="bar"></div><div class="name">'+d.name+'</div><div class="desc">'+d.desc+'</div></div>';
+  }
+</script>
+</body></html>
