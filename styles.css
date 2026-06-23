@@ -136,10 +136,14 @@ ul.hero-trust{padding:0;margin:0;}
 .hp{position:absolute;left:-9999px;}
 
 /* trust ribbon under hero */
-.ribbon{background:var(--navy);color:#fff;}
-.ribbon ul{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem 2.4rem;padding:1.1rem 0;margin:0;list-style:none;}
-.ribbon li{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:.01em;}
+.ribbon{background:var(--navy);color:#fff;overflow:hidden;}
+.ribbon .marquee{display:flex;}
+.ribbon-set{flex:0 0 100%;min-width:100%;display:flex;align-items:center;justify-content:space-around;
+  gap:1.5rem;margin:0;padding:1.05rem 1.5rem;list-style:none;animation:ribbon-scroll 32s linear infinite;}
+.ribbon li{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:.01em;white-space:nowrap;}
 .ribbon svg{color:var(--green-lt);flex:none;}
+@keyframes ribbon-scroll{to{transform:translateX(-100%);}}
+@media(hover:hover){.ribbon:hover .ribbon-set{animation-play-state:paused;}}
 
 /* section heads */
 .sec-head{max-width:62ch;margin-bottom:clamp(1.8rem,3.5vw,2.8rem);}
@@ -298,11 +302,9 @@ ul.hero-trust{padding:0;margin:0;}
   .hero .btn-lg{padding:.82rem 1.4rem;font-size:1rem;}
   .hero-trust{display:none;}            /* redundant with the ribbon below */
 
-  /* trust ribbon: centered, swipeable single row */
-  .ribbon ul{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:1.6rem;
-    padding-block:.95rem;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;}
-  .ribbon ul::-webkit-scrollbar{display:none;}
-  .ribbon li{flex:none;scroll-snap-align:center;font-size:.94rem;}
+  /* trust ribbon: natural-width items so labels aren't squished while scrolling */
+  .ribbon-set{flex:0 0 auto;min-width:max-content;justify-content:flex-start;gap:2.2rem;font-size:.94rem;}
+  .ribbon li{font-size:.94rem;}
 }
 
 /* ---------- mobile menu ---------- */
