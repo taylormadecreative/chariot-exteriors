@@ -1,5 +1,8 @@
 images/src/
 preview/
+overlays/
+videos/clips/
+build/
 *.log
 .DS_Store
 node_modules/

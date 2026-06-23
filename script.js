@@ -76,6 +76,15 @@
     reveals.forEach(el => el.classList.add('in'));
   }
 
+  /* showcase video: play only while in view (saves bandwidth/CPU) */
+  const sc = $('.showcase-video');
+  if (sc && 'IntersectionObserver' in window) {
+    const io2 = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) sc.play().catch(() => {}); else sc.pause();
+    }), { threshold: 0.25 });
+    io2.observe(sc);
+  } else if (sc) { sc.play().catch(() => {}); }
+
   /* floating quote widget (chat-style, follows scroll) */
   const fab = $('#quoteFab'), panel = $('#quotePanel'), backdrop = $('#quoteBackdrop'), closeBtn = $('#quoteClose');
   let lastFocus = null;
